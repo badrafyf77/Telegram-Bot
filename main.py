@@ -122,7 +122,7 @@ def start_command(message):
 def allMsgs(message):
     return True
 
-@bot.message_handler(allMsgs())
+@bot.message_handler(func=allMsgs)
 def reply(message): 
     bot.reply_to(message,"Salam")
 
