@@ -119,4 +119,11 @@ bot = telebot.TeleBot(BOT_TOKEN)
 def start_command(message): 
     main()
 
+def allMsgs(message):
+    return True
+
+@bot.message_handler(allMsgs())
+def reply(message): 
+    bot.reply_to(message,"Salam")
+
 bot.polling()
