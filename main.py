@@ -1,10 +1,13 @@
 import telebot
 from telegram_text import PlainText
-from decouple import config
 import requests
 from requests.exceptions import ConnectionError
 from bs4 import BeautifulSoup
 import time
+import os
+from keep_alive import keep_alive
+
+keep_alive()
 
 def escape_text(text):
     element = PlainText(text)
@@ -111,8 +114,8 @@ def main():
 
 
 
-BOT_TOKEN = config('BOT_TOKEN')
-CHANNEL_ID = config('CHANNEL_ID')
+BOT_TOKEN = os.environ.get('BOT_TOKEN')
+CHANNEL_ID = os.environ.get('CHANNEL_ID')
 bot = telebot.TeleBot(BOT_TOKEN)
 
 @bot.message_handler(commands=['start'])
