@@ -46,6 +46,11 @@ def get_text(coupon_list, title_list, description_list, image_list,categories_li
             my_coupons.append(coupon)
             print('coupon number : ' + str(len(my_coupons)))
             send_message(image_url, title, description, coupon, category, price, language)
+        else:
+            images.pop()
+            categories.pop()
+            prices.pop()
+            languages.pop()
 
 
 
@@ -109,8 +114,11 @@ def process():
 
 def main():
     while True:
-        process()
-        time.sleep(180)
+        try:
+            process()
+        except Exception as e:
+            print(e)
+
 
 
 
